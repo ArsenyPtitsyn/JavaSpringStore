@@ -28,9 +28,7 @@ hs_err_pid*
 *.iws
 
 # Maven
-*.xml
 log/
 target/
 
-*.properties
-*.yaml
+
