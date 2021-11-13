@@ -11,6 +11,7 @@ import java.util.List;
 @Component
 public class ProductRepository {
     private List<Product> products;
+    private Long maxId;
 
     @PostConstruct
     public void init() {
@@ -25,13 +26,36 @@ public class ProductRepository {
         products.add(new Product(8L, "sunflower oil", 90));
         products.add(new Product(9L, "olive oil", 300));
         products.add(new Product(10L, "potatoes", 20));
+        this.maxId = 10L;
     }
 
     public List<Product> findAll() {
         return Collections.unmodifiableList(products);
     }
 
-    public Product findBiId(Long id) {
+    public Product findProductById(Long id) {
         return products.get(Math.toIntExact(id - 1));
     }
+
+    public Product saveOrUpdate(Product product) {
+        if (product.getId() == null) {
+            maxId++;
+            product.setId(maxId);
+            products.add(product);
+            return product;
+        } else {
+            for (int i = 0; i < products.size(); i++) {
+                if (product.getId().equals(products.get(i).getId())) {
+                    products.set(i, product);
+                    return product;
+                }
+            }
+        }
+        throw new RuntimeException("Something went wrong!");
+    }
+
+//    public void deleteById(Long id) {
+//        products.removeIf(p -> p.getId().equals(id));
+//    } // не понятно как после удаления нескольких (одного) товаров (товара), редактировать товары.
+//      // Список уменьшается, а мы вытаскиваем товар по id не пробегая по списку...Короче БД надо прикручивать
 }
