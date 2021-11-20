@@ -32,9 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
-### wrapper ###
-mvnw
-mvnw.cmd
+**/mvnw
+**/mvnw.cmd
 **/src/test/
 **/homework3/
 **/homework4/
