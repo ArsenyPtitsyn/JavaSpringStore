@@ -32,10 +32,10 @@ build/
 ### VS Code ###
 .vscode/
 
-**/mvnw
-**/mvnw.cmd
-**/src/test/
-**/homework3/
-**/homework4/
-**/homework5/
-**/.mvn/
+../../mvnw
+../../mvnw.cmd
+../../src/test/
+../../homework3/
+../../homework4/
+../../homework5/
+../../.mvn/
