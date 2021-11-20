@@ -35,8 +35,8 @@ build/
 ### wrapper ###
 mvnw
 mvnw.cmd
-/src/test/
-/homework3/
-/homework4/
-/homework5/
-/.mvn/
+**/src/test/
+**/homework3/
+**/homework4/
+**/homework5/
+**/.mvn/
