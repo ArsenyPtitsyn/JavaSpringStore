@@ -3,8 +3,8 @@ package ru.geekbrains.hibernate.h2.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.hibernate.h2.dao.CustomerDao;
-import ru.geekbrains.hibernate.h2.models.Customer;
-import ru.geekbrains.hibernate.h2.models.Product;
+import ru.geekbrains.hibernate.h2.entities.Customer;
+import ru.geekbrains.hibernate.h2.entities.Product;
 
 import java.util.List;
 
@@ -34,6 +34,6 @@ public class CustomerService {
     }
 
     public List<Product> findCustomersProducts(Long id) {
-        return customerDao.findCustomerProducts(id);
+        return customerDao.findProductsOfCertainCustomer(id);
     }
 }

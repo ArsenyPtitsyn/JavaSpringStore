@@ -3,7 +3,7 @@ package ru.geekbrains.hibernate.h2.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.hibernate.h2.dao.ProductDao;
-import ru.geekbrains.hibernate.h2.models.Product;
+import ru.geekbrains.hibernate.h2.entities.Product;
 
 import java.util.List;
 

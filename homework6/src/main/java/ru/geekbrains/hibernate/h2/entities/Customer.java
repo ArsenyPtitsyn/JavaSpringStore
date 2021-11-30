@@ -1,6 +1,4 @@
-package ru.geekbrains.hibernate.h2.models;
-
-import org.hibernate.annotations.Cascade;
+package ru.geekbrains.hibernate.h2.entities;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,8 +18,13 @@ public class Customer {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "customer")
-    List<Product> products;
+    @ManyToMany
+    @JoinTable(
+            name = "products_customers",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<Product> products;
 
     public Customer() {
     }

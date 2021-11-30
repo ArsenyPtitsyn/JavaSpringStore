@@ -1,8 +1,6 @@
 package ru.geekbrains.hibernate.h2;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.geekbrains.hibernate.h2.dao.CustomerDao;
-import ru.geekbrains.hibernate.h2.models.Customer;
 import ru.geekbrains.hibernate.h2.services.CustomerService;
 import ru.geekbrains.hibernate.h2.services.ProductService;
 import ru.geekbrains.hibernate.h2.utils.SessionFactoryUtils;

@@ -1,8 +1,7 @@
-package ru.geekbrains.hibernate.h2.models;
-
-import org.hibernate.annotations.Cascade;
+package ru.geekbrains.hibernate.h2.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -18,9 +17,13 @@ public class Product {
     @Column(name = "cost")
     private int cost;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @ManyToMany
+    @JoinTable(
+            name = "products_customers",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id")
+    )
+    private List<Customer> customers;
 
     public Long getId() {
         return id;
@@ -46,12 +49,12 @@ public class Product {
         this.cost = cost;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 
     public Product() {

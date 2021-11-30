@@ -3,8 +3,8 @@ package ru.geekbrains.hibernate.h2.dao;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.geekbrains.hibernate.h2.models.Customer;
-import ru.geekbrains.hibernate.h2.models.Product;
+import ru.geekbrains.hibernate.h2.entities.Customer;
+import ru.geekbrains.hibernate.h2.entities.Product;
 import ru.geekbrains.hibernate.h2.utils.SessionFactoryUtils;
 
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class CustomerDao implements Dao<Customer> {
         }
     }
 
-    public List<Product> findCustomerProducts(Long id) {
+    public List<Product> findProductsOfCertainCustomer(Long id) {
         try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
             Customer customer = session.get(Customer.class, id);
