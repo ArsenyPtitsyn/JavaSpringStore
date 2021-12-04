@@ -1,12 +1,11 @@
 package ru.geekbrains.front.angular.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.front.angular.entities.Product;
 import ru.geekbrains.front.angular.exceptions.ResourceNotFoundException;
 import ru.geekbrains.front.angular.services.ProductService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -15,12 +14,15 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public List<Product> getAllProductsByCostBetween(
+    public Page<Product> getAllProductsByCostBetween(
             @RequestParam(name = "min_cost", defaultValue = "0") Integer minCost,
-            @RequestParam(name = "max_cost", required = false) Integer maxCost) {
+            @RequestParam(name = "max_cost", required = false) Integer maxCost,
+            @RequestParam(name = "p", defaultValue = "1") Integer page) {
         if (maxCost == null)
             maxCost = Integer.MAX_VALUE;
-        return productService.findAllByCostBetween(minCost, maxCost);
+        if (page < 1)
+            page = 1;
+        return productService.findAllByCostBetween(minCost, maxCost, page);
     }
 
     @GetMapping("/{id}")

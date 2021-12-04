@@ -1,6 +1,8 @@
 package ru.geekbrains.front.angular.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.front.angular.entities.Product;
 import ru.geekbrains.front.angular.repositories.ProductRepository;
@@ -13,8 +15,12 @@ import java.util.Optional;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public List<Product> findAllByCostBetween(int minCost, int maxCost) {
-        return productRepository.findAllByCostBetween(minCost, maxCost);
+    public Page<Product> findAll(int page) {
+        return productRepository.findAll(PageRequest.of(page -1, 10));
+    }
+
+    public Page<Product> findAllByCostBetween(int minCost, int maxCost, int page) {
+        return productRepository.findAllByCostBetween(minCost, maxCost, PageRequest.of(page - 1, 10));
     }
 
     public Optional<Product> findById(Long id) {
