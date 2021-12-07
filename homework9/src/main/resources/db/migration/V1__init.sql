@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS products (id bigserial PRIMARY KEY, title VARCHAR(255), cost int);
+INSERT INTO products (title, cost) VALUES
+('title1', 103),
+('title2', 23),
+('title3', 35),
+('title4', 74),
+('title5', 953),
+('title6', 126),
+('title7', 65),
+('title8', 285),
+('title9', 219),
+('title10', 52),
+('title11', 427),
+('title12', 823),
+('title13', 2345),
+('title14', 523),
+('title15', 72),
+('title16', 82),
+('title17', 100),
+('title18', 258),
+('title19', 341),
+('title20', 521);
