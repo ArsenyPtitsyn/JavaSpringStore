@@ -9,7 +9,7 @@ import ru.geekbrains.rest.exceptions.ResourceNotFoundException;
 import ru.geekbrains.rest.services.ProductService;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/v1/products")
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
@@ -33,16 +33,16 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product saveNewProduct(@RequestBody ProductDto productDto) {
+    public ProductDto saveNewProduct(@RequestBody ProductDto productDto) {
         Product product = new Product(null, productDto.getTitle(), productDto.getCost());
-        return productService.save(product);
+        return new ProductDto(productService.save(product));
     }
 
 
     @PutMapping
-    public Product updateProduct(@RequestBody ProductDto productDto) {
+    public ProductDto updateProduct(@RequestBody ProductDto productDto) {
         Product product = new Product(productDto.getId(), productDto.getTitle(), productDto.getCost());
-        return productService.save(product);
+        return new ProductDto(productService.save(product));
     }
 
     @DeleteMapping("/{id}")
