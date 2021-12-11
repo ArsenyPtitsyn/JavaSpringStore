@@ -6,6 +6,7 @@ angular.module('app', []).controller('productController', function ($scope, $htt
             method: 'GET',
             url: contextPath + '/products',
             params: {
+                title_part: $scope.filter ? $scope.filter.title_part : null,
                 min_cost: $scope.filter ? $scope.filter.min_cost : null,
                 max_cost: $scope.filter ? $scope.filter.max_cost : null,
                 p: page
