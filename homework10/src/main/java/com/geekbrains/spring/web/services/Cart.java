@@ -1,6 +1,5 @@
 package com.geekbrains.spring.web.services;
 
-import com.geekbrains.spring.web.converters.ProductConverter;
 import com.geekbrains.spring.web.dto.ProductDto;
 import com.geekbrains.spring.web.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Cart {
     private List<ProductDto> productsInCart;
-    private final ProductsService productsService;
-    private final ProductConverter productConverter;
 
     @PostConstruct
     public void init() {
@@ -30,9 +27,7 @@ public class Cart {
         return productsInCart.stream().mapToInt(ProductDto::getPrice).sum();
     }
 
-    public void addProductInCartById(Long id) {
-        ProductDto productDto = productConverter.entityToDto(productsService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found, id = " + id)));
+    public void addProductInCartById(ProductDto productDto) {
         productsInCart.add(productDto);
     }
 
