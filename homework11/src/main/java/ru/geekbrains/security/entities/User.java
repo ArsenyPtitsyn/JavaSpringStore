@@ -24,8 +24,8 @@ public class User {
     private String email;
 
     @ManyToMany
-    @JoinTable(name = "users_authorities",
+    @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id"))
-    private Collection<Authority> authorities;
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
 }

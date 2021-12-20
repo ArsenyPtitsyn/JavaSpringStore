@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/auth_page").authenticated()
                 .antMatchers("/user_info").authenticated()
-                .antMatchers("/admin").hasAnyAuthority("AUTHORITY_DELETE_USERS", "AUTHORITY_CREATE_NEW_USERS")
+                .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
