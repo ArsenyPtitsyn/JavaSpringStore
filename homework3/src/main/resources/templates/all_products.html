@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All products</title>
+</head>
+<body>
+    <h3>List of products</h3>
+    <div th:each="p : ${products}">
+        <span th:text="${'id:' + p.id + ' title:' + p.title + ' cost:' + p.cost}"></span><br>
+        <a th:href="@{'/products/' + ${p.id}}">INFO</a>
+        <a th:href="@{'/products/edit/' + ${p.id}}">EDIT</a>
+<!--        <a th:href="@{'/products/delete/' + ${p.id}}">DELETE</a>-->
+    </div>
+    <h3>Add new product</h3>
+    <form th:action="@{/products/add}" th:object="${product}" method="POST">
+        <input type="text" name="title" placeholder="Enter the product title"/>
+        <input type="number" name="cost" placeholder="Enter the product price"/>
+        <input type="submit">
+    </form>
+</body>
+</html>
