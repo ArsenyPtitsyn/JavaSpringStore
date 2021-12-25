@@ -34,3 +34,8 @@ target/
 *.jsp
 homework1/src/main/webapp/
 homework4/.mvn/
+homework5/fullVersion/mvnw
+homework5/fullVersion/mvnw.cmd
+homework5/fullVersion/src/test/
+homework5/lightVersion/
+
